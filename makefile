@@ -4,7 +4,7 @@ build:
 
 run:
 	make build
-	docker run -p 9999:80 tcgraf
+	docker run -d -p 9999:80 tcgraf
 
 test:
 	go test -cover ./...
