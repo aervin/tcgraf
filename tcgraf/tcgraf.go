@@ -64,7 +64,7 @@ func handler(w http.ResponseWriter, req *http.Request) {
 
 	switch ev.Type {
 	case CreateDash:
-		createDash(ev)
+		dashRes, err := createDash(ev)
 		if err != nil {
 			log.Print("dash creation failed", err.Error())
 			writeErr(w, err)
@@ -72,7 +72,7 @@ func handler(w http.ResponseWriter, req *http.Request) {
 		}
 
 		_ = json.NewEncoder(w).Encode(ResponseSuccess{
-			Message: "nice",
+			Message: dashRes,
 			Success: true,
 		})
 
